@@ -91,6 +91,7 @@ class Icaruscode(CMakePackage):
     depends_on('larpandora', type=('build','run'))
     depends_on('larpandoracontent', type=('build','run'))
     depends_on('larreco', type=('build','run'))
+    depends_on('larvecutils', type=('build','run'))
     depends_on('larsim', type=('build','run'))
     depends_on('libwda', type=('build','run'))
     depends_on('marley', type=('build','run'))

@@ -16,7 +16,7 @@ index 5b06808..fc44cd5 100644
  project(icaruscode VERSION 09.35.00 LANGUAGES CXX)
  
  message(STATUS
-@@ -22,70 +24,78 @@ message(STATUS
+@@ -22,70 +24,79 @@ message(STATUS
    "\n-- === *** Start of configuration of ${PROJECT_NAME} ***"
    "\n-- ===")
  
@@ -115,6 +115,7 @@ index 5b06808..fc44cd5 100644
 +find_package(lardataalg)
 +find_package(larcore)
 +find_package(lardata)
++find_package(larvecutils)
 +find_package(larsim)
 +find_package(larevt)
 +find_package(larreco)
@@ -3721,7 +3722,7 @@ new mode 100644
 index 3561a35..a22323b
 --- a/icaruscode/TPC/SignalProcessing/RawDigitFilter/Algorithms/CMakeLists.txt
 +++ b/icaruscode/TPC/SignalProcessing/RawDigitFilter/Algorithms/CMakeLists.txt
-@@ -1,70 +1,76 @@
+@@ -1,70 +1,78 @@
  
 +include_directories(${FFTW3_INCLUDE_DIRS})
 +link_directories(${FFTW3_LIBRARY_DIRS})
@@ -3774,6 +3775,7 @@ index 3561a35..a22323b
 +		larcorealg::Geometry
 +		larcore::Geometry_Geometry_service
 +		lardata::Utilities
++               larvecutils::MarqFitAlg
 +		larevt::Filters
 +		lardataobj::RawData
 +		larevt::CalibrationDBI_IOVData
@@ -3807,6 +3809,7 @@ index 3561a35..a22323b
 +		lardataobj::RawData
 +		lardataobj::RecoBase
 +		lardata::Utilities
++               larvecutils::MarqFitAlg
 +		fhiclcpp::fhiclcpp
 +		cetlib::cetlib cetlib_except::cetlib_except
 +		larcorealg::Geometry

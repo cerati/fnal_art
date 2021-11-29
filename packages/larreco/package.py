@@ -26,16 +26,17 @@ class Larreco(CMakePackage):
     url      = "https://github.com/LArSoft/larreco/archive/v01_02_03.tar.gz"
     list_url = "https://api.github.com/repos/LArSoft/larreco/tags"
 
-    version('09.30.00.rc1', sha256='3c3c52247075dd8f9c002517168159d7ac2c7319ca246d729a677a91d39149d8')
-    version('09.07.05',     sha256='991a058854c730d1bcbd7056652669f5c24d37faaa879e85e0befd5f65ff7aa3')
-    version('09.07.03',     sha256='03921a26a025361ecda0015c0cb54eb003cf34847fef46beb15a4b60e5e971d6')
-    version('09.07.02',     sha256='26f215907727ff0e8567b39fcac65169b5f06948397d775009a39c0c30ed3469')
-    version('09.07.01',     sha256='527e23aaaad0e556a744d64abe11350746f9f5d86d6b5761cc1cbaac81bcb1b9')
-    version('09.07.00',     sha256='5616d751f14a1903efaebf3c193451e99f3cce674a4d00dd499241f942681cfb')
-    version('09.06.17',     sha256='018feacc42ba65116e3a5cf97fca91d35588b86b369b499e3b1074c46c728063')
-    version('09.06.16',     sha256='d616e607cca3949fe92fdb10d2552b43177b56e4281ed0b365e26f051c9a34bb')
-    version('09.06.15',     sha256='0008866cf4b342f5002abd736773aee3c314b1077b0f035a7c564e0e069a102d')
-    version('mwm1', tag='mwm1', git='https://github.com/marcmengel/larreco.git', get_full_repo=True)
+    version('09.35.00', branch='larvecutils-v09_35_00', git='https://github.com/cerati/larreco.git', get_full_repo=True)
+    #version('09.30.00.rc1', sha256='3c3c52247075dd8f9c002517168159d7ac2c7319ca246d729a677a91d39149d8')
+    #version('09.07.05',     sha256='991a058854c730d1bcbd7056652669f5c24d37faaa879e85e0befd5f65ff7aa3')
+    #version('09.07.03',     sha256='03921a26a025361ecda0015c0cb54eb003cf34847fef46beb15a4b60e5e971d6')
+    #version('09.07.02',     sha256='26f215907727ff0e8567b39fcac65169b5f06948397d775009a39c0c30ed3469')
+    #version('09.07.01',     sha256='527e23aaaad0e556a744d64abe11350746f9f5d86d6b5761cc1cbaac81bcb1b9')
+    #version('09.07.00',     sha256='5616d751f14a1903efaebf3c193451e99f3cce674a4d00dd499241f942681cfb')
+    #version('09.06.17',     sha256='018feacc42ba65116e3a5cf97fca91d35588b86b369b499e3b1074c46c728063')
+    #version('09.06.16',     sha256='d616e607cca3949fe92fdb10d2552b43177b56e4281ed0b365e26f051c9a34bb')
+    #version('09.06.15',     sha256='0008866cf4b342f5002abd736773aee3c314b1077b0f035a7c564e0e069a102d')
+    #version('mwm1', tag='mwm1', git='https://github.com/marcmengel/larreco.git', get_full_repo=True)
 
 
     def url_for_version(self, version):
@@ -52,6 +53,7 @@ class Larreco(CMakePackage):
                           if d['name'].startswith('v') ]))
 
     patch('v09_07_05.patch', when='@09.07.05')
+    patch('v09_07_05.patch', when='@09.35.00')
 
     variant('cxxstd',
             default='17',
@@ -69,6 +71,7 @@ class Larreco(CMakePackage):
     depends_on('canvas-root-io')
     depends_on('cetlib-except')
     depends_on('larsim')
+    depends_on('larvecutils')
     depends_on('larsoft-data')
     depends_on('marley')
     depends_on('nutools')

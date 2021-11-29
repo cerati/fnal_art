@@ -17,7 +17,7 @@ index 71f0e74..3985b28 100644
  
  include(CetCMakeEnv)
  cet_cmake_env()
-@@ -27,42 +28,45 @@ cet_set_compiler_flags(DIAGS CAUTIOUS
+@@ -27,43 +28,46 @@ cet_set_compiler_flags(DIAGS CAUTIOUS
  cet_report_compiler_flags()
  
  # these are minimum required versions, not the actual product versions
@@ -30,6 +30,7 @@ index 71f0e74..3985b28 100644
 -find_ups_product( lardata )
 -find_ups_product( larevt )
 -find_ups_product( larsim )
+-find_ups_product( larvecutils )
 -find_ups_product( nutools )
 -find_ups_product( nug4 )
 -find_ups_product( nurandom )
@@ -51,6 +52,7 @@ index 71f0e74..3985b28 100644
 +find_package( lardata )
 +find_package( larevt )
 +find_package( larsim )
++find_package( larvecutils )
 +find_package( nutools )
 +find_package( nug4 )
 +find_package( nurandom )
@@ -313,20 +315,24 @@ diff --git a/larreco/HitFinder/HitFinderTools/CMakeLists.txt b/larreco/HitFinder
 index 3e9df1d..d914cb3 100644
 --- a/larreco/HitFinder/HitFinderTools/CMakeLists.txt
 +++ b/larreco/HitFinder/HitFinderTools/CMakeLists.txt
-@@ -2,24 +2,21 @@ cet_enable_asserts()
- 
+@@ -1,26 +1,25 @@
+ cet_enable_asserts()
+
  set( hitfinder_tool_lib_list
-                         larreco_RecoAlg
+-                        larreco_RecoAlg
 -                        larcorealg_Geometry
 -                        lardataobj_RecoBase
 -                        larcore_Geometry_Geometry_service
 -                        lardata_Utilities
 -                        nurandom_RandomUtils_NuRandomService_service
+-                        larvecutils_MarqFitAlg
++                        larreco::RecoAlg
 +                        larcorealg::Geometry
 +                        lardataobj::RecoBase
 +                        larcore::Geometry_Geometry_service
 +                        lardata::Utilities
 +                        nurandom::RandomUtils_NuRandomService_service
++                        larvecutils::MarqFitAlg
                          art::Framework_Core
                          art::Framework_Principal
                          art::Framework_Services_Registry
@@ -334,8 +340,9 @@ index 3e9df1d..d914cb3 100644
                          art::Persistency_Provenance
                          art_root_io::tfile_support ROOT::Core
 -            ${ART_FRAMEWORK_SERVICES_OPTIONAL_RANDOMNUMBERGENERATOR_SERVICE}
++                        ${ART_FRAMEWORK_SERVICES_OPTIONAL_RANDOMNUMBERGENERATOR_SERVICE}
                          art_root_io::TFileService_service
--                        ${ART_FRAMEWORK_SERVICES_SYSTEM_FILECATALOGMETADATA_SERVICE}
+                         ${ART_FRAMEWORK_SERVICES_SYSTEM_FILECATALOGMETADATA_SERVICE}
                          art::Utilities
                          canvas::canvas
                          messagefacility::MF_MessageLogger

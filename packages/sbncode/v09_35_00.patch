@@ -729,7 +729,7 @@ diff --git a/sbncode/EventGenerator/MeVPrtl/Tools/CMakeLists.txt b/sbncode/Event
 index 3f1d1f6..11364dc 100644
 --- a/sbncode/EventGenerator/MeVPrtl/Tools/CMakeLists.txt
 +++ b/sbncode/EventGenerator/MeVPrtl/Tools/CMakeLists.txt
-@@ -1,150 +1,149 @@
+@@ -1,150 +1,150 @@
 -link_directories( $ENV{ROOTSYS}/lib )
  
 -art_make_library( LIBRARY_NAME sbncode_EventGenerator_MeVPrtl_Constants

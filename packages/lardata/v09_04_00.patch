@@ -16,7 +16,7 @@ index 8f0dcf0..b974d54 100644
  
  include(CetCMakeEnv)
  cet_cmake_env()
-@@ -27,40 +26,42 @@ cet_set_compiler_flags(DIAGS CAUTIOUS
+@@ -27,41 +26,43 @@ cet_set_compiler_flags(DIAGS CAUTIOUS
  cet_report_compiler_flags()
  
  # these are minimum required versions, not the actual product versions
@@ -30,6 +30,7 @@ index 8f0dcf0..b974d54 100644
 -find_ups_product(art_root_io)
 -find_ups_product( postgresql  )
 -find_ups_product( range )
+-find_ups_product( larvecutils )
 -find_ups_product( fftw )
 -find_ups_product( canvas  )
 -find_ups_product(messagefacility)
@@ -44,6 +45,7 @@ index 8f0dcf0..b974d54 100644
 +find_package( larcore )
 +find_package( art )
 +find_package( art_root_io )
++find_package( larvecutils )
 +find_package( FFTW3 )
 +find_package( canvas )
 +find_package( messagefacility )
@@ -288,7 +290,7 @@ diff --git a/lardata/Utilities/CMakeLists.txt b/lardata/Utilities/CMakeLists.txt
 index 9c4e691..119f17f 100644
 --- a/lardata/Utilities/CMakeLists.txt
 +++ b/lardata/Utilities/CMakeLists.txt
-@@ -1,37 +1,44 @@
+@@ -1,35 +1,42 @@
  include_directories(${FFTW_INCLUDE_DIR})
 -cet_find_library(FFTW_LIBRARY NAMES fftw3 fftw3-3 PATHS ENV FFTW_LIBRARY )
 +find_library(FFTW_LIBRARY NAMES fftw3 PATHS ${FFTW_LIBRARIES} )
@@ -347,7 +349,6 @@ index 9c4e691..119f17f 100644
 +              messagefacility::headers
                messagefacility::MF_MessageLogger)
  
- include(FindOpenMP)
 diff --git a/lardata/Utilities/ComputePi_module.cc b/lardata/Utilities/ComputePi_module.cc
 index e1086e4..e6a0f07 100644
 --- a/lardata/Utilities/ComputePi_module.cc

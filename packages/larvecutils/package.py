@@ -18,27 +18,14 @@ def sanitize_environments(*args):
             env.deprioritize_system_paths(var)
 
 
-class Lardata(CMakePackage):
-    """Lardata"""
+class Larvecutils(CMakePackage):
+    """Larvecutils"""
 
-    homepage = "https://cdcvs.fnal.gov/redmine/projects/lardata"
-    git_base = 'https://github.com/LArSoft/lardata.git'
-    url      = "https://github.com/LArSoft/lardata/archive/v01_02_03.tar.gz"
-    list_url = "https://api.github.com/repos/LArSoft/lardata/tags"
+    homepage = "https://cdcvs.fnal.gov/redmine/projects/larvecutils"
+    url      = "https://github.com/cerati/larvecutils.git"
+    git_base = 'https://github.com/cerati/larvecutils.git'
 
-    version('09.35.00', branch='larvecutils-v09_35_00', git='https://github.com/cerati/lardata.git', get_full_repo=True)
-    #version('09.30.00.rc1', sha256='62068b739d636374f56250d944283bda7dbb532d5f4a02dd38e9b105ce51c90c')
-    #version('09.04.00',     sha256='a2495f4427245d6901138439750cf746a7a4bdc3633fbcb9e7c5cdffdb1e4af6')
-    #version('09.03.02',     sha256='7e48e6caaaf6a49cf9e2b575b0fb253db7ecba9034f9c9b940758df99f25eda6')
-    #version('09.03.01',     sha256='fb2e4779b6b70816d7c78545694e47d45aaa0eebe50d187df6fe56479d539513')
-    #version('09.03.00',     sha256='a5edd13b0e7ec921fd343c8ce0655551511174f76c2716ff28c41448ed35c82d')
-    #version('09.02.10',     sha256='618ddb47626f539bb19ea2b1f5ce2e4a49ab99e2570c7303348f47fa401ee021')
-    #version('09.02.09',     sha256='fb86a4b49a7c3528930ebc8d8032fe2c902d152a56834b3a11a08c9edad4705c')
-    #version('09.02.08.01',  sha256='ef3984d58e3a33b5de291c831ba545b0d5fec664c907bb0047dce4a4aaf3952e')
-    #version('09.02.08',     sha256='cf22bba23224770b989a880f17414bcb1f2c00128f2bc6bccf6e4838e187b9c9')
-    #version('09.02.07',     sha256='5f42749bf958f1d30201ea9a2a078fb6a77977cfc023c4eb0302da81a6a3daf9')
-    #version('mwm1', tag='mwm1', git='https://github.com/marcmengel/lardata.git', get_full_repo=True)
-
+    version('09.35.00', branch='v09_35_00-spack', git='https://github.com/cerati/larvecutils.git', get_full_repo=True)
 
     def url_for_version(self, version):
         url = 'https://github.com/LArSoft/{0}/archive/v{1}.tar.gz'
@@ -59,16 +46,11 @@ class Lardata(CMakePackage):
             multi=False,
             description='Use the specified C++ standard when building.')
 
-    patch('v09_04_00.patch', when='@09.04.00')
-    patch('v09_04_00.patch', when='@09.35.00')
-
-    depends_on('nutools')
-    depends_on('larcore')
-    depends_on('lardataobj')
-    depends_on('lardataalg')
-    depends_on('larvecutils')
-    depends_on('range-v3')
-    depends_on('fftw')
+    #depends_on('nutools')
+    #depends_on('larcore')
+    #depends_on('lardataobj')
+    #depends_on('lardataalg')
+    #depends_on('range-v3')
     depends_on('cetmodules', type='build')
 
     def cmake_args(self):
@@ -78,11 +60,11 @@ class Lardata(CMakePackage):
                ]
         return args
 
-    def flag_handler(self, name, flags):
-        if name == 'cxxflags' and  self.spec.compiler.name == 'gcc':
-            flags.append('-Wno-error=deprecated-declarations')
-            flags.append('-Wno-error=class-memaccess')
-        return (flags, None, None)
+    #def flag_handler(self, name, flags):
+    #    if name == 'cxxflags' and  self.spec.compiler.name == 'gcc':
+    #        flags.append('-Wno-error=deprecated-declarations')
+    #        flags.append('-Wno-error=class-memaccess')
+    #    return (flags, None, None)
 
     def setup_build_environment(self, spack_env):
         # Binaries.
