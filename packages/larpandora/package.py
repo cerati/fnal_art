@@ -136,6 +136,7 @@ class Larpandora(CMakePackage):
         spack_env.prepend_path('ROOT_INCLUDE_PATH', self.prefix.include)
         spack_env.append_path('FHICL_FILE_PATH','{0}/job'.format(self.prefix))
         spack_env.append_path('FW_SEARCH_PATH','{0}/gdml'.format(self.prefix))
+        spack_env.append_path('FW_SEARCH_PATH','{0}/fw'.format(self.prefix))
 
     def setup_dependent_run_environment(self, run_env, dspec):
         # Ensure we can find plugin libraries.
@@ -144,4 +145,5 @@ class Larpandora(CMakePackage):
         run_env.prepend_path('ROOT_INCLUDE_PATH', self.prefix.include)
         run_env.append_path('FHICL_FILE_PATH','{0}/job'.format(self.prefix))
         run_env.append_path('FW_SEARCH_PATH','{0}/gdml'.format(self.prefix))
+        run_env.append_path('FW_SEARCH_PATH','{0}/fw'.format(self.prefix))
 

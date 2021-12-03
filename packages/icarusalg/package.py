@@ -169,6 +169,8 @@ class Icarusalg(CMakePackage):
         spack_env.prepend_path('ROOT_INCLUDE_PATH', self.prefix.include)
         # Perl modules.
         spack_env.prepend_path('PERL5LIB', os.path.join(self.prefix, 'perllib'))
+        #
+        spack_env.append_path('FW_SEARCH_PATH','{0}/gdml'.format(self.prefix))
         # Cleanup.
         sanitize_environments(spack_env)
 
@@ -181,5 +183,7 @@ class Icarusalg(CMakePackage):
         run_env.prepend_path('ROOT_INCLUDE_PATH', self.prefix.include)
         # Perl modules.
         run_env.prepend_path('PERL5LIB', os.path.join(self.prefix, 'perllib'))
+        #
+        run_env.append_path('FW_SEARCH_PATH','{0}/gdml'.format(self.prefix))
         # Cleanup.
         sanitize_environments(run_env)
